@@ -27,8 +27,8 @@ main() {
     expect(result.fold(id, id), isA<CreateUserResponse>());
   });
   test("Deve retornar um DomainError", () async {
-    final params = CreateUserParams(email: "a", password: "a", name: "a");
-    when(repository(any)).thenAnswer((_) async => Left(DomainError(message: "asdf")));
+    final params = CreateUserParams(email: "", password: "a", name: "a");
+    // when(repository(any)).thenAnswer((_) async => Left(DomainError(message: "asdf")));
 
     final result = await usecase(params);
 
