@@ -4,7 +4,6 @@ import 'package:rx_notifier/rx_notifier.dart';
 
 import '../../../shared/utils/sub_states.dart';
 
-
 class SignupStore {
   final _name = RxNotifier<String>("");
   String get name => _name.value;

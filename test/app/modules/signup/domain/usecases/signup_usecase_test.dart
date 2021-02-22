@@ -3,19 +3,23 @@ import 'package:clean_pokedex/app/modules/signup/domain/params/create_user_param
 import 'package:clean_pokedex/app/modules/signup/domain/repositories/i_signup_repository.dart';
 import 'package:clean_pokedex/app/modules/signup/domain/usecases/signup_usecase.dart';
 import 'package:clean_pokedex/app/shared/errors/domain_error.dart';
+import 'package:clean_pokedex/app/shared/storage/secure_app_storage.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class ISignupRepositoryMock extends Mock implements ISignupRepository {}
 
+class SecureAppStorageMock extends Mock implements SecureAppStorage {}
+
 main() {
   SignupUsecase usecase;
   ISignupRepository repository;
+  SecureAppStorage prefs;
 
   setUp(() {
     repository = ISignupRepositoryMock();
-    usecase = SignupUsecase(repository);
+    usecase = SignupUsecase(repository, prefs);
   });
   test("Deve retornar um CreateUserResponse", () async {
     final params = CreateUserParams(email: "a", password: "a", name: "a");

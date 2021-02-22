@@ -17,4 +17,6 @@ class CreateUserParams {
         "password": password == null ? null : password,
         "pokemonList": [],
       };
+
+  bool get hasError => name.isEmpty || email.isEmpty || password.isEmpty;
 }

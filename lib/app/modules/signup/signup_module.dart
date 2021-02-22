@@ -14,8 +14,9 @@ class SignupModule extends ChildModule {
   List<Bind> get binds => [
         Bind((i) => CreateUserDatasource(Modular.get<HttpService>())),
         Bind((i) => SignupRepository(i())),
-        Bind((i) => SignupUsecase(i())),
+        Bind((i) => SignupUsecase(i(), i())),
 
+        //Presenter
         Bind((i) => SignupStore()),
         Bind((i) => SignupValidator(i())),
         Bind((i) => SignupController(i(), i(), i())),
